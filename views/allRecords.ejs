@@ -1,0 +1,42 @@
+<%- include header.ejs %>
+
+<%- include nav.ejs %>
+
+
+<div class="container">
+    <h1 style="text-align:center">All Contacts are here</h1>
+
+    <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Address</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% for(i=0; i<getData.length; i++) { %>
+              <tr>
+                <th scope="row"><%= getData[i].fullName %></th>
+                <td><%= getData[i].email %></td>
+                <td><%= getData[i].phone %></td>
+                <td><%= getData[i].address %></td>
+                <td>
+                    <a href="/edit/<%= getData[i]._id %>" style="margin-right: 10px;">
+                        <i class="fas fa-edit">Edit</i>
+                    </a>
+                    <a href="/delete/<%= getData[i]._id %>/" onclick="confirm('Are you sure want to delete this contact?');">
+                        <i class="fas fa-trash">Delete</i>
+                    </a>
+                </td>
+              </tr>
+            <% } %>  
+            </tbody>
+          </table>
+
+</div>
+
+
+<%- include footer.ejs %>
